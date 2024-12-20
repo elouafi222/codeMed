@@ -4,4 +4,4 @@ transformers==4.46.3
 torch==2.5.1
 tokenizers==0.20.3
 uvicorn==0.34.0
-re==0.0.1  # Intégré dans Python, pas besoin d'installation, donc à ignorer si nécessaire
+#re==0.0.1  # Intégré dans Python, pas besoin d'installation, donc à ignorer si nécessaire
