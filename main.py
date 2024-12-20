@@ -1,5 +1,6 @@
 from transformers import pipeline, set_seed, AutoModelForCausalLM, AutoTokenizer
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 # Téléchargez et chargez le modèle
@@ -30,6 +31,14 @@ class CodeResponse(BaseModel):
     generated_code: list
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Autorise toutes les origines en développement
+    allow_credentials=True,
+    allow_methods=["*"],  # Autorise toutes les méthodes
+    allow_headers=["*"],  # Autorise tous les headers
+)
 
 @app.post("/generate-code", response_model=CodeResponse)
 def generate_code(request: CodeRequest):
